@@ -1,3 +1,0 @@
-/usr/src/crow/build/CMakeFiles/rebuild_cache.dir
-/usr/src/crow/build/CMakeFiles/edit_cache.dir
-/usr/src/crow/build/CMakeFiles/cpp_comparison_crow.dir
