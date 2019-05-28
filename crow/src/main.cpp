@@ -10,7 +10,7 @@ int main(int argc, char ** argv) {
         for (int i = 0; i < 10000; ++i) {
             snprintf(_id, size_t(_id), "item-%d", i);
             crow::json::wvalue item;
-            item["id"] = _id;
+            item["id"] = static_cast<string>(_id);
             item["name"] = "Hello, world!";
             item["type"] = "application";
             items.emplace_back(std::move(item));
