@@ -6,8 +6,6 @@ services:
     image: cpp-comparison-crow
     command: /usr/src/crow/build/cpp_comparison_crow
     ports: ["18001:18001"]
-    volumes:
-      - ./crow:/usr/src/crow
 
   cpprestsdk:
     build: ./cpprestsdk
@@ -15,17 +13,12 @@ services:
     image: cpp-comparison-cpprestsdk
     command: /usr/src/cpprestsdk/build/cpp_comparison_cpprestsdk
     ports: ["18002:18002"]
-    volumes:
-      - ./cpprestsdk:/usr/src/cpprestsdk
-
   simple_web_server:
     build: ./simple_web_server
     container_name: cpp-comparison-simple-web-server
     image: cpp-comparison-simple-web-server
     command: /usr/src/simple_web_server/build/cpp_comparison_simple_web_server
     ports: ["18003:18003"]
-    volumes:
-      - ./simple_web_server:/usr/src/simple_web_server
 
   pistache:
     build: ./pistache
@@ -33,8 +26,6 @@ services:
     image: cpp-comparison-pistache
     command: /usr/src/pistache/build/cpp_comparison_pistache
     ports: ["18004:18004"]
-    volumes:
-      - ./pistache:/usr/src/pistache
 
   restbed:
     build: ./restbed
@@ -42,5 +33,3 @@ services:
     image: cpp-comparison-restbed
     command: /usr/src/restbed/build/cpp_comparison_restbed
     ports: ["18005:18005"]
-    volumes:
-      - ./restbed:/usr/src/restbed
