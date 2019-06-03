@@ -10,7 +10,9 @@ class CPPComparisonServer {
     public:
         CPPComparisonServer(Address addr):
             httpEndpoint(std::make_shared<Http::Endpoint>(addr))
-        {}
+        {
+            cout << "Pistache listening for requests at " << addr.host() << ":" << addr.port() << endl;
+        }
 
         void init(size_t thr = 1) {
             auto opts = Http::Endpoint::options()
