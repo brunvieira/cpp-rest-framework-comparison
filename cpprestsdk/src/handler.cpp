@@ -26,14 +26,14 @@ void Handler::handle_get(http_request message)
 {
     ucout <<  message.to_string() << endl;
     vector<json::value> values;
-    values.reserve(1000);
+    values.reserve(10000);
 
     vector<pair<utility::string_t, json::value>> fields;
     fields.reserve(3);
 
     char _id[20];
 
-    for (int i = 0; i < 1000; ++i) {
+    for (int i = 0; i < 10000; ++i) {
         snprintf(_id, sizeof(_id), "item-%d", i);
         fields.push_back(make_pair("id", json::value::string(_id)));
         fields.push_back(make_pair("name", json::value::string("Hello World")));

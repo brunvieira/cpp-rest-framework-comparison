@@ -13,7 +13,7 @@ int main() {
     server.config.port = iPort;
 
     server.resource["^/$"]["GET"] = [](shared_ptr<HttpServer::Response> response, shared_ptr<HttpServer::Request> request) {
-        response->write(make_json_array(1000));
+        response->write(make_json_array(10000));
     };
 
     cout << "Simple Web Server RUNNING ON PORT = " << iPort << endl;

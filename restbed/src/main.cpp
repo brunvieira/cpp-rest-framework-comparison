@@ -15,7 +15,7 @@ void get_method_handler( const shared_ptr< Session > session )
 
     session->fetch( content_length, [ ]( const shared_ptr< Session > session, const Bytes & body )
     {
-        string json = make_json_array(1000);
+        string json = make_json_array(10000);
         session->close( OK, json, { { "Content-Length", to_string(json.length()) } } );
     } );
 }

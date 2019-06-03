@@ -23,5 +23,5 @@ int main(int argc, char ** argv) {
     char * port = getenv("PORT");
     uint16_t iPort = static_cast<uint16_t>(port != NULL ? stoi(port) : 18001);
     cout << "CROW RUNNING ON PORT = " << iPort << endl;
-    app.port(iPort).multithreaded().run();
+    app.port(iPort).run();
 }
