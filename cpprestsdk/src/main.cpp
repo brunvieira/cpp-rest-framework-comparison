@@ -1,6 +1,6 @@
 #include <iostream>
 #include "handler.h"
-
+#include "user_interrupt_handler.h"
 using namespace utility;
 
 std::unique_ptr<Handler> g_httpHandler;
@@ -34,12 +34,14 @@ void on_shutdown()
 
 int main(int argc, char *argv[]) {
     string_t address = make_address();
-    on_initialize(address);
-
-    std::cout << "Press ENTER to exit." << std::endl;
-    std::string line;
-    std::getline(std::cin, line);
-
-    on_shutdown();
+    try {
+        cfx::InterruptHandler::hookSIGINT();
+        on_initialize(address);
+        cfx::InterruptHandler::waitForUserInterrupt();
+        on_shutdown();
+    }
+    catch(std::exception & e) {
+        std::cerr << "something wrong happen! :(" << '\n';
+    }
     return 0;
 }
