@@ -34,12 +34,15 @@ class CPPComparisonServer {
         void setupRoutes() {
             using namespace Rest;
 
-            Routes::Get(router, "/", Routes::bind(&CPPComparisonServer::getJSON, this));
+            Routes::Get(router, "/json/array/:size", Routes::bind(&CPPComparisonServer::getJSON, this));
         }
 
         void getJSON(const Rest::Request& request, Http::ResponseWriter response) {
-            string json = make_json_array(10000);
-            response.send(Http::Code::Ok, json);
+            if (request.hasParam(":size")) {
+                int size = request.param(":size").as<int>();
+                string json = make_json_array(10000);
+                response.send(Http::Code::Ok, json);
+            }
         }
 
         std::shared_ptr<Http::Endpoint> httpEndpoint;
