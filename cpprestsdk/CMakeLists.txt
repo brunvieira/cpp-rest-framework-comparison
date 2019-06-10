@@ -9,7 +9,7 @@ find_package(OpenSSL 1.0.0 REQUIRED)
 include_directories("/usr/local/include")
 link_directories("/usr/local/lib")
 
-add_executable(cpp_comparison_cpprestsdk src/main.cpp src/handler.cpp)
+add_executable(cpp_comparison_cpprestsdk src/main.cpp src/handler.cpp src/route.cc)
 target_link_libraries(cpp_comparison_cpprestsdk
   ${CPPREST_LIB}
   Boost::boost

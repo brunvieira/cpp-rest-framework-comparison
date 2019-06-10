@@ -19,6 +19,8 @@
 #include "cpprest/containerstream.h"
 #include "cpprest/producerconsumerstream.h"
 
+#include "route.h"
+
 #include <locale>
 #include <ctime>
 
@@ -27,7 +29,7 @@ using namespace web;
 using namespace http;
 using namespace utility;
 using namespace http::experimental::listener;
-
+using namespace route;
 
 class Handler
 {
@@ -43,8 +45,10 @@ class Handler
 
     private:
         void handle_get(http_request message);
+        void json_array(http_request message, int size);
         void handle_error(pplx::task<void>& t);
         http_listener m_listener;
+        Route route;
 };
 
 #endif // HANDLER_H
