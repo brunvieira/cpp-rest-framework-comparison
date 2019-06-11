@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 11)
 find_package(Boost REQUIRED COMPONENTS system thread filesystem chrono atomic date_time)
 find_package(OpenSSL 1.0.0 REQUIRED)
 
-add_executable(cpp_comparison_simple_web_server src/main.cpp src/cpputils.cpp)
+add_executable(cpp_comparison_simple_web_server src/main.cpp src/cpputils/cpputils.cpp)
 target_link_libraries(cpp_comparison_simple_web_server
   Boost::boost
   Boost::system
