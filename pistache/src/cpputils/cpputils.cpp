@@ -41,5 +41,3 @@ uint16_t strtouint16(std::string value, uint16_t defaultValue) {
     } catch(...) {};
     return defaultValue;
 }
-
-// boohoo
