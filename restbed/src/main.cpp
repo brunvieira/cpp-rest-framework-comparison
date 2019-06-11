@@ -2,7 +2,7 @@
 #include <memory>
 #include <cstdlib>
 #include <restbed>
-#include "cpputils.h"
+#include "cpputils/cpputils.h"
 
 using namespace std;
 using namespace restbed;
@@ -11,12 +11,7 @@ void get_method_handler(const shared_ptr<Session> session)
 {
     const auto& request = session->get_request();
     const string sizeParameter = request->get_path_parameter("size");
-    int size = 0;
-    try {
-        size = stoi(sizeParameter);
-    } catch (...) {
-        session->close(restbed::BAD_REQUEST);
-    }
+    uint16_t size = strtouint16(sizeParameter, 0);
     if (!size) {
         return;
     }

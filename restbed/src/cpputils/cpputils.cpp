@@ -1,5 +1,6 @@
 #include "cpputils.h"
 using namespace rapidjson;
+using namespace std;
 
 uint16_t server_port(int defaultPort) {
     char * port = getenv("PORT");
@@ -7,7 +8,7 @@ uint16_t server_port(int defaultPort) {
     return iPort;
 }
 
-std::string make_json_array(int size) {
+string make_json_array(uint16_t size) {
     StringBuffer buffer;
     Writer<StringBuffer> writer(buffer);
     char _id[20];
@@ -26,3 +27,19 @@ std::string make_json_array(int size) {
     writer.EndArray();
     return buffer.GetString();
 };
+
+uint16_t strtouint16(const char * value, uint16_t defaultValue) {
+    string result{value};
+    return strtouint16(result, defaultValue);
+}
+
+uint16_t strtouint16(std::string value, uint16_t defaultValue) {
+    try {
+        std::string::size_type sz;
+        int result = stoi(value, &sz, 10);
+        return static_cast<uint16_t>(result);
+    } catch(...) {};
+    return defaultValue;
+}
+
+// boohoo
