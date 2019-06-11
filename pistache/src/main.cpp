@@ -39,8 +39,8 @@ class CPPComparisonServer {
 
         void getJSON(const Rest::Request& request, Http::ResponseWriter response) {
             if (request.hasParam(":size")) {
-                int size = request.param(":size").as<int>();
-                string json = make_json_array(10000);
+                uint16_t size = request.param(":size").as<uint16_t>();
+                string json = make_json_array(size);
                 response.send(Http::Code::Ok, json);
             }
         }
