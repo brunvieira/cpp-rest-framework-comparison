@@ -12,8 +12,10 @@ int main() {
     HttpServer server;
     server.config.port = iPort;
 
-    server.resource["^/$"]["GET"] = [](shared_ptr<HttpServer::Response> response, shared_ptr<HttpServer::Request> request) {
-        response->write(make_json_array(10000));
+    server.resource["^/json/array/(\\d+)$"]["GET"] = [](shared_ptr<HttpServer::Response> response, shared_ptr<HttpServer::Request> request) {
+        string sizeParameter = request->path_match[1].str();
+        uint16_t size = strtouint16(sizeParameter, 0);
+        response->write(make_json_array(size));
     };
 
     cout << "Simple Web Server RUNNING ON PORT = " << iPort << endl;
