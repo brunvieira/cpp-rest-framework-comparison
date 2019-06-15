@@ -16,8 +16,9 @@ RUN git clone https://github.com/Tencent/rapidjson.git rapidjson && cd rapidjson
 && git submodule update --init  && mkdir build && cd build && cmake .. && make && make install
 
 WORKDIR /usr/src/simple_web_server
-COPY . .
-RUN rm -rf ./build/*
+COPY ./simple_web_server/src ./src
+COPY ./simple_web_server/CMakeLists.txt .
+COPY ./cpputils src/cpputils
 
 WORKDIR /usr/src/simple_web_server/build
 RUN cmake .. && make

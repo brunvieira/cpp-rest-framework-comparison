@@ -17,8 +17,9 @@ RUN git clone https://github.com/Tencent/rapidjson.git rapidjson && cd rapidjson
 && git submodule update --init  && mkdir build && cd build && cmake .. && make && make install
 
 WORKDIR /usr/src/pistache
-COPY . .
-RUN rm -rf ./build/*
+COPY ./pistache/src ./src
+COPY ./pistache/CMakeLists.txt .
+COPY ./cpputils src/cpputils
 
 WORKDIR /usr/src/pistache/build
 RUN cmake .. && make

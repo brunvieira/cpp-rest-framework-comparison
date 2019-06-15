@@ -16,8 +16,9 @@ RUN git clone https://github.com/Tencent/rapidjson.git rapidjson && cd rapidjson
 && git submodule update --init  && mkdir build && cd build && cmake .. && make && make install
 
 WORKDIR /usr/src/restbed
-COPY . .
-RUN rm -rf ./build/*
+COPY ./restbed/src ./src
+COPY ./restbed/CMakeLists.txt .
+COPY ./cpputils src/cpputils
 
 WORKDIR /usr/src/restbed/build
 RUN cmake .. && make
